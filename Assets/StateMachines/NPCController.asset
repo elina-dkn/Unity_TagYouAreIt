@@ -1,0 +1,283 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ece13e57ab2a54e80667f7d20c2544, type: 3}
+  m_Name: NPCController
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 200, y: 200}
+  AnyPosition: {x: -323, y: 231}
+  States:
+  - rid: 6299276026407813120
+  - rid: 6299276026407813121
+  - rid: 6299276026407813122
+  - rid: 6299276026407813123
+  - rid: 6299276026407813124
+  AnyTransitions: []
+  StartingState:
+    rid: 6299276026407813120
+  Parameters:
+  - rid: 6299276026407813135
+  - rid: 6299276036269408273
+  - rid: 6299276068879073280
+  references:
+    version: 2
+    RefIds:
+    - rid: 6299276026407813120
+      type: {class: FSMC_State, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _behaviours:
+        - rid: 6299276026407813130
+        Position: {x: 517, y: 200}
+        _name: Idle
+        TransitionsFrom:
+        - rid: 6299276043851923458
+        - rid: 6299276043851923460
+        - rid: 6299276043851923507
+        TransitionsTo:
+        - rid: 6299276034555510788
+        - rid: 6299276036269408275
+        - rid: 6299276036269408285
+    - rid: 6299276026407813121
+      type: {class: FSMC_State, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _behaviours:
+        - rid: 6299276026407813131
+        Position: {x: 827, y: 203}
+        _name: RunAway
+        TransitionsFrom:
+        - rid: 6299276036269408270
+        - rid: 6299276036269408275
+        - rid: 6299276043851923485
+        TransitionsTo:
+        - rid: 6299276043851923458
+    - rid: 6299276026407813122
+      type: {class: FSMC_State, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _behaviours:
+        - rid: 6299276026407813133
+        Position: {x: 86, y: 424}
+        _name: RunToward
+        TransitionsFrom:
+        - rid: 6299276036269408285
+        TransitionsTo:
+        - rid: 6299276043851923460
+    - rid: 6299276026407813123
+      type: {class: FSMC_State, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _behaviours:
+        - rid: 6299276026407813132
+        Position: {x: 547, y: 447}
+        _name: Invulnerable
+        TransitionsFrom:
+        - rid: 6299276034555510788
+        TransitionsTo:
+        - rid: 6299276036269408270
+    - rid: 6299276026407813124
+      type: {class: FSMC_State, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _behaviours:
+        - rid: 6299276026407813134
+        Position: {x: 521, y: 6}
+        _name: Tagged
+        TransitionsFrom: []
+        TransitionsTo:
+        - rid: 6299276043851923485
+        - rid: 6299276043851923507
+    - rid: 6299276026407813130
+      type: {class: Idle, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+    - rid: 6299276026407813131
+      type: {class: RunAway, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+    - rid: 6299276026407813132
+      type: {class: Invulnerable, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+    - rid: 6299276026407813133
+      type: {class: RunToward, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+    - rid: 6299276026407813134
+      type: {class: Tagged, ns: , asm: Assembly-CSharp}
+      data:
+        enabled: 1
+    - rid: 6299276026407813135
+      type: {class: FSMC_BoolParameter, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _type: 2
+        _name: I_Down
+        _value: 0
+    - rid: 6299276034555510788
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276043851923496
+        _originState:
+          rid: 6299276026407813123
+        _destinationState:
+          rid: 6299276026407813120
+        _name: Invulnerable->Idle
+    - rid: 6299276036269408270
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276036269408271
+          - rid: 6299276043851923482
+        _originState:
+          rid: 6299276026407813121
+        _destinationState:
+          rid: 6299276026407813123
+        _name: RunAway->Invulnerable
+    - rid: 6299276036269408271
+      type: {class: FSMC_BoolCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: 0
+        parameter:
+          rid: 6299276026407813135
+        Value: 1
+    - rid: 6299276036269408273
+      type: {class: FSMC_FloatParameter, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _type: 1
+        _name: Distance
+        _value: 0
+    - rid: 6299276036269408275
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276036269408276
+        _originState:
+          rid: 6299276026407813121
+        _destinationState:
+          rid: 6299276026407813120
+        _name: RunAway->Idle
+    - rid: 6299276036269408276
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: 1
+        parameter:
+          rid: 6299276036269408273
+        Value: 11.5
+    - rid: 6299276036269408285
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276036269408313
+        _originState:
+          rid: 6299276026407813122
+        _destinationState:
+          rid: 6299276026407813120
+        _name: RunToward->Idle
+    - rid: 6299276036269408313
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: -1
+        parameter:
+          rid: 6299276036269408273
+        Value: 10.5
+    - rid: 6299276043851923458
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276043851923459
+        _originState:
+          rid: 6299276026407813120
+        _destinationState:
+          rid: 6299276026407813121
+        _name: Idle->RunAway
+    - rid: 6299276043851923459
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: -1
+        parameter:
+          rid: 6299276036269408273
+        Value: 10
+    - rid: 6299276043851923460
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276043851923461
+        _originState:
+          rid: 6299276026407813120
+        _destinationState:
+          rid: 6299276026407813122
+        _name: Idle->RunToward
+    - rid: 6299276043851923461
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: 1
+        parameter:
+          rid: 6299276036269408273
+        Value: 11
+    - rid: 6299276043851923482
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: -1
+        parameter:
+          rid: 6299276036269408273
+        Value: 5
+    - rid: 6299276043851923485
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276043851923487
+        _originState:
+          rid: 6299276026407813121
+        _destinationState:
+          rid: 6299276026407813124
+        _name: RunAway->Tagged
+    - rid: 6299276043851923487
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: -1
+        parameter:
+          rid: 6299276036269408273
+        Value: 1
+    - rid: 6299276043851923496
+      type: {class: FSMC_BoolCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: 0
+        parameter:
+          rid: 6299276026407813135
+        Value: 0
+    - rid: 6299276043851923507
+      type: {class: FSMC_Transition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        conditions:
+        - conditions:
+          - rid: 6299276043851923508
+        _originState:
+          rid: 6299276026407813120
+        _destinationState:
+          rid: 6299276026407813124
+        _name: Idle->Tagged
+    - rid: 6299276043851923508
+      type: {class: FSMC_FloatCondition, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        comparison: -1
+        parameter:
+          rid: 6299276036269408273
+        Value: 1
+    - rid: 6299276068879073280
+      type: {class: FSMC_FloatParameter, ns: FSMC.Runtime, asm: FSMC.Runtime}
+      data:
+        _type: 1
+        _name: NPC_Speed
+        _value: 3
